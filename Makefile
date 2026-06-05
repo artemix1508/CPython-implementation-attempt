@@ -67,5 +67,20 @@ install: all
 	mkdir -p $(DESTDIR)/bin
 	cp $(APPS) $(DESTDIR)/bin/
 
+.PHONY: bup
+bup: all
+	rm -rf build/package
+	mkdir -p build/package/bin
+	cp lua.elf build/package/bin/
+	@echo 'name = "lua"' > build/package/MANIFEST.toml
+	@echo 'version = "5.4.4"' >> build/package/MANIFEST.toml
+	@echo '[install]' >> build/package/MANIFEST.toml
+	@echo 'bin = "/bin"' >> build/package/MANIFEST.toml
+	mkdir -p build
+	tar -cf build/lua.tar -C build/package MANIFEST.toml bin
+	lz4 -f build/lua.tar build/lua.bup
+	rm -f build/lua.tar
+	rm -rf build/package
+
 clean:
 	rm -rf obj build $(APPS)
