@@ -130,7 +130,7 @@ obj/boredos_mathstubs.o: src/boredos_mathstubs.c
 	$(CC) $(PY_CFLAGS) -c $< -o $@
 
 # Generate object file paths
-PYOBJS := $(patsubst $(CPYTHON)/%.c, obj/%.o, $(ALL_SRCS)) obj/boredos_mathstubs.o
+PYOBJS := $(patsubst $(CPYTHON)/%.c, obj/%.o, $(ALL_SRCS)) obj/boredos_mathstubs.o12
 
 APPS = python.elf
 
