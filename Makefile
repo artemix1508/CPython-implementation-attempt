@@ -29,6 +29,7 @@ PY_CFLAGS = \
     -include src/sysinclude/fcntl.h \
     -include src/sysinclude/locale.h \
     -include src/sysinclude/time.h \
+    -include src/pyconfig.h \
     -DDOUBLE_IS_LITTLE_ENDIAN_IEEE754 \
     -include src/sysinclude/inttypes.h \
     -include src/sysinclude/dirent.h \
