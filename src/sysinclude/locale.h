@@ -1,6 +1,15 @@
 #ifndef BOREDOS_LUA_LOCALE_H
 #define BOREDOS_LUA_LOCALE_H
 
+#define LC_CTYPE   0
+#define LC_NUMERIC 1
+#define LC_TIME    2
+#define LC_COLLATE 3
+#define LC_MONETARY 4
+#define LC_ALL     6
+#define CODESET    14
+static inline char *nl_langinfo(int item) { (void)item; return "UTF-8"; }
+
 struct lconv {
     char *decimal_point;
     char *thousands_sep;
@@ -22,7 +31,6 @@ struct lconv {
     char n_sign_posn;
 };
 
-#define LC_ALL 0
 
 char *setlocale(int category, const char *locale);
 struct lconv *localeconv(void);
